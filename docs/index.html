@@ -3,59 +3,148 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Project Website</title>
+  <title>XSearch</title>
   <link rel="stylesheet" href="./assets/style.css" />
 </head>
 <body>
-  <div class="container">
-    <div class="nav">
-      <a href="./index.html">Home</a>
-      <a href="./pages/label-augmentation.html">Label Augmentation with Assertion</a>
-      <a href="./pages/qualitative-analysis.html">Qualitative Analysis</a>
-      <a href="./pages/user-study.html">User Study</a>
-    </div>
 
-    <div class="hero">
-      <span class="badge">Work in progress</span>
-      <h1>Project Website</h1>
-      <p>
-        This site is a lightweight skeleton for our paper/project.
-        We will gradually populate each section with content, figures, and results.
-      </p>
-    </div>
-
-    <div class="grid">
-      <div class="card">
-        <h2>Home</h2>
-        <p>High-level overview, key contributions, links to paper/code, and updates.</p>
-        <p style="margin-top:10px;"><a href="./index.html">Open →</a></p>
+  <!-- Top Nav -->
+  <div class="topbar">
+    <div class="container nav">
+      <div class="brand">XSearch</div>
+      <div class="navlinks">
+        <a href="#home">Home</a><span class="sep">·</span>
+        <a href="#assertion" class="dim">Label Augmentation with As...</a><span class="sep">·</span>
+        <a href="#qualitative" class="dim">Qualitative Analysis</a><span class="sep">·</span>
+        <a href="#quantitative" class="dim">Quantitative Analysis</a><span class="sep">·</span>
+        <a href="#user-study" class="dim">User Study</a>
       </div>
-      <div class="card">
-        <h2>Label Augmentation with Assertion</h2>
-        <p>Pipeline, assertion rules, examples, and ablations (placeholder for now).</p>
-        <p style="margin-top:10px;"><a href="./pages/label-augmentation.html">Open →</a></p>
-      </div>
-      <div class="card">
-        <h2>Qualitative Analysis</h2>
-        <p>Case studies, visualization, and failure analysis (placeholder for now).</p>
-        <p style="margin-top:10px;"><a href="./pages/qualitative-analysis.html">Open →</a></p>
-      </div>
-      <div class="card">
-        <h2>User Study</h2>
-        <p>Study design, interface, metrics, and findings (placeholder for now).</p>
-        <p style="margin-top:10px;"><a href="./pages/user-study.html">Open →</a></p>
-      </div>
-    </div>
-
-    <div class="footer">
-      <div>© <span id="year"></span> Project Team</div>
-      <div style="margin-top:6px;">Last updated: <span id="last"></span></div>
     </div>
   </div>
 
+  <!-- Hero -->
+  <div id="home" class="hero">
+    <div class="hero-inner">
+      <h1>Explainable Semantic Code Search</h1>
+      <div class="underline"></div>
+    </div>
+  </div>
+
+  <!-- Introduction -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Introduction</h2>
+
+      <div class="lead">
+        <p>
+          In this work, we aim to tackle two critical challenges in semantic code search:
+          <b>lack of explainability</b> and <b>poor generalizability</b>.
+          Traditional embedding-based code retrieval methods heavily depend on training data and often fail to generalize to new distributions,
+          while their black-box nature limits user trust.
+        </p>
+
+        <p>
+          To address these issues, we introduce <b>XSearch</b>, an intrinsically explainable semantic code retriever designed to:
+        </p>
+
+        <ul class="bullets">
+          <li><b>(i) Enhance Explainability:</b> Identify and clearly align important concepts between queries and candidate code snippets, helping developers easily understand and verify retrieved results.</li>
+          <li><b>(ii) Boost Generalizability:</b> By learning advanced concept extraction and alignment tasks, XSearch significantly improves retrieval performance on unseen (out-of-distribution) datasets without expanding training data or model size.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dataset & Code -->
+  <section class="section">
+    <div class="container">
+      <div class="grid-2">
+
+        <div class="card">
+          <img class="icon" src="./assets/icons/dataset.png" alt="dataset" />
+          <div>
+            <h3>Dataset</h3>
+            <ul>
+              <li>Includes <b>925,362</b> query-code pairs in total.</li>
+              <li>Each pair is annotated with <b>fine-grained concept-to-code alignments</b>.</li>
+              <li><b>First explainability-oriented benchmark</b> for semantic code search in the community.</li>
+            </ul>
+            <div class="linkline">
+              <a href="REPLACE_WITH_DATASET_LINK" target="_blank" rel="noreferrer">Link to the Dataset</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <img class="icon" src="./assets/icons/code.png" alt="code" />
+          <div>
+            <h3>Code</h3>
+            <div class="text">The code implementation of <b>XSearch</b></div>
+            <div class="linkline">
+              <a href="REPLACE_WITH_CODE_REPO_LINK" target="_blank" rel="noreferrer">Link to XSearch code repo</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mini-grid">
+        <div class="card" id="assertion">
+          <img class="icon" src="./assets/icons/approach.png" alt="approach" />
+          <div>
+            <h3>Approach: Label Augmentation with Assertion Feedback</h3>
+            <div class="linkline">
+              <a href="REPLACE_WITH_ASSERTION_PAGE_LINK">Detailed breakdown of Label Augmentation with Assertion Feedback</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <img class="icon" src="./assets/icons/rqs.png" alt="rqs" />
+          <div>
+            <h3>Experiment RQs</h3>
+            <div class="linkline" id="qualitative">
+              <a href="REPLACE_WITH_QUAL_PAGE_LINK">Qualitative Analysis</a>
+            </div>
+            <div class="linkline" id="quantitative">
+              <a href="REPLACE_WITH_QUANT_PAGE_LINK">Quantitative Analysis</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mini-grid" style="margin-top:22px">
+        <div class="card" id="user-study">
+          <img class="icon" src="./assets/icons/user.png" alt="user study" />
+          <div>
+            <h3>User Study</h3>
+            <div class="linkline">
+              <a href="REPLACE_WITH_USER_STUDY_PAGE_LINK">Detailed setting and results of user study</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <img class="icon" src="./assets/icons/code.png" alt="demo" />
+          <div>
+            <h3>Demo</h3>
+            <div class="text">We will add demo videos / interactive examples here.</div>
+            <div class="linkline">
+              <a href="REPLACE_WITH_DEMO_LINK">Open Demo</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="footer">
+    © <span id="year"></span> XSearch · Work in progress
+  </div>
+
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    document.getElementById('last').textContent = new Date().toISOString().slice(0,10);
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
