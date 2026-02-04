@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Project Website</title>
+  <link rel="stylesheet" href="./assets/style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="nav">
+      <a href="./index.html">Home</a>
+      <a href="./pages/label-augmentation.html">Label Augmentation with Assertion</a>
+      <a href="./pages/qualitative-analysis.html">Qualitative Analysis</a>
+      <a href="./pages/user-study.html">User Study</a>
+    </div>
+
+    <div class="hero">
+      <span class="badge">Work in progress</span>
+      <h1>Project Website</h1>
+      <p>
+        This site is a lightweight skeleton for our paper/project.
+        We will gradually populate each section with content, figures, and results.
+      </p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Home</h2>
+        <p>High-level overview, key contributions, links to paper/code, and updates.</p>
+        <p style="margin-top:10px;"><a href="./index.html">Open →</a></p>
+      </div>
+      <div class="card">
+        <h2>Label Augmentation with Assertion</h2>
+        <p>Pipeline, assertion rules, examples, and ablations (placeholder for now).</p>
+        <p style="margin-top:10px;"><a href="./pages/label-augmentation.html">Open →</a></p>
+      </div>
+      <div class="card">
+        <h2>Qualitative Analysis</h2>
+        <p>Case studies, visualization, and failure analysis (placeholder for now).</p>
+        <p style="margin-top:10px;"><a href="./pages/qualitative-analysis.html">Open →</a></p>
+      </div>
+      <div class="card">
+        <h2>User Study</h2>
+        <p>Study design, interface, metrics, and findings (placeholder for now).</p>
+        <p style="margin-top:10px;"><a href="./pages/user-study.html">Open →</a></p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div>© <span id="year"></span> Project Team</div>
+      <div style="margin-top:6px;">Last updated: <span id="last"></span></div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('last').textContent = new Date().toISOString().slice(0,10);
+  </script>
+</body>
+</html>
