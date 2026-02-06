@@ -3,41 +3,625 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Qualitative Analysis</title>
+  <title>XSearch · Qualitative Analysis</title>
   <link rel="stylesheet" href="../assets/style.css" />
+
+  <style>
+    .content-wrap{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 18px;
+    }
+
+    /* Failure Type card */
+    .case{
+      max-width: 900px;
+      margin: 0 auto 26px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .case-head{
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 12px;
+      background: #fafafa;
+    }
+    .case-title{
+      margin:0;
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text);
+    }
+    .case-tag{
+      font-size: 12px;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 4px 10px;
+      background: #fff;
+      white-space: nowrap;
+    }
+    .case-body{ padding: 16px; }
+
+    /* one-line definition under each failure type */
+    .type-desc{
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px 14px;
+      background: #fbfdff;
+      color: var(--text);
+      font-size: 14px;
+      margin: 0 0 14px;
+    }
+
+    /* Example list: A on top, B below */
+    .example-grid{
+      display: block;
+    }
+
+    /* single example card */
+    .ex{
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .ex:last-child{ margin-bottom: 0; }
+
+    .ex-head{
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--line);
+      background: #fafafa;
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .ex-title{
+      margin:0;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--text);
+    }
+    .ex-meta{
+      font-size: 12px;
+      color: var(--muted);
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* example content: image then text */
+    .ex-body{
+      padding: 12px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    /* image slot */
+    .img-slot{
+      border: 1px dashed #cbd5e1;
+      border-radius: 12px;
+      padding: 10px;
+      background: #fbfdff;
+    }
+    .img-slot img{
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+    }
+    .img-placeholder{
+      color: #64748b;
+      font-size: 13px;
+      padding: 16px 8px;
+      text-align: center;
+    }
+
+    /* explanation slot */
+    .ex-text{
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px 12px;
+      background: #fff;
+    }
+    .ex-text p{
+      margin: 0 0 10px;
+      color: var(--text);
+      font-size: 14px;
+    }
+    .ex-text p:last-child{ margin:0; }
+
+    .muted{ color: var(--muted); }
+
+    /* Banner title */
+    .banner-title{
+      text-align:center;
+      font-size: 34px;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--brand);
+      margin: 0;
+      padding: 26px 0;
+      background: #f3f4f6;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+  </style>
 </head>
+
 <body>
-  <div class="container">
-    <div class="nav">
-      <a href="../index.html">Home</a>
-      <a href="./label-augmentation.html">Label Augmentation with Assertion</a>
-      <a href="./qualitative-analysis.html">Qualitative Analysis</a>
-      <a href="./user-study.html">User Study</a>
-    </div>
 
-    <div class="hero">
-      <h1>Qualitative Analysis</h1>
-      <p>
-        Placeholder page. We will add: representative cases, error taxonomy, and visualization.
-      </p>
-    </div>
-
-    <div class="grid">
-      <div class="card">
-        <h2>Planned content</h2>
-        <p>• Case study set-up</p>
-        <p>• Success cases</p>
-        <p>• Failure cases & analysis</p>
+  <!-- Top Nav (pages/*) -->
+  <div class="topbar">
+    <div class="container nav">
+      <div class="brand">
+        <a href="../index.html#home" style="color:inherit;text-decoration:none;">XSearch</a>
       </div>
-      <div class="card">
-        <h2>Visualizations</h2>
-        <p>We will add qualitative figures and tables here.</p>
+      <div class="navlinks">
+        <a href="../index.html#home">Home</a><span class="sep">·</span>
+        <a href="./label-augmentation.html" class="dim">Label Augmentation with Assertion</a><span class="sep">·</span>
+        <a href="./qualitative-analysis.html">Qualitative Analysis</a><span class="sep">·</span>
+        <a href="./user-study.html" class="dim">User Study</a>
       </div>
-    </div>
-
-    <div class="footer">
-      <a href="../index.html">← Back to Home</a>
     </div>
   </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-inner">
+      <h1>Qualitative Analysis</h1>
+      <div class="underline"></div>
+    </div>
+  </div>
+
+  <!-- Banner -->
+  <h2 class="banner-title">Examples on XSearch's Failure Types</h2>
+
+  <section class="section" style="border-bottom:none;">
+    <div class="container">
+
+      <!-- ========================================================= -->
+      <!-- Failure Type 1: Redundant low-information concepts -->
+      <!-- ========================================================= -->
+      <div class="case">
+        <div class="case-head">
+          <p class="case-title">Failure Type: Redundant Low-Information Concepts</p>
+          <span class="case-tag">cross-language</span>
+        </div>
+
+        <div class="case-body">
+          <div class="type-desc">
+            <b>Definition.</b>
+            The query contains an <b>extra (hallucinated) concept</b> that is <b>highlighted as important</b> but is <b>not substantively implemented</b> in the code.
+            When this happens, XSearch cannot find faithful evidence for the highlighted logic and instead falls back to <b>weak, surface-level correlations</b>,
+            leading to <b>low similarity/confidence</b> even for seemingly related snippets.
+          </div>
+
+          <div class="example-grid">
+            <!-- Example A (Go) -->
+            <div class="ex">
+              <div class="ex-head">
+                <p class="ex-title">Example A (Go)</p>
+                <div class="ex-meta">
+                  <span><b>Language:</b> <span class="muted">Go</span></span>
+                </div>
+              </div>
+
+              <div class="ex-body">
+                <div class="img-slot">
+                  <img src="../assets/imgs/redndent_concept_go.png" alt="Failure Type 1 - Example A (Go)">
+                </div>
+
+                <div class="ex-text">
+                  <p>
+                    <b>What goes wrong:</b>
+                    The highlighted concept (yellow) describes a required logic in the query, but it is <b>not actually implemented</b> in the retrieved code.
+                    As a result, the model cannot align this concept to a faithful counterpart and instead matches to loosely related fragments
+                    (e.g., code tokens that co-occur with <span class="muted">data dir</span> such as <span class="muted">address</span>-like fields),
+                    which are <b>not evidence</b> of the intended behavior.
+                  </p>
+                  <p>
+                    <b>Impact:</b>
+                    Because the yellow highlighted concept has no real implementation match, the overall similarity/confidence remains <b>low</b>
+                    (the retriever is matching weak associations rather than concrete logic), causing the top result to be unverified and ultimately incorrect.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Example B (PHP) -->
+            <div class="ex">
+              <div class="ex-head">
+                <p class="ex-title">Example B (PHP)</p>
+                <div class="ex-meta">
+                  <span><b>Language:</b> <span class="muted">PHP</span></span>
+                </div>
+              </div>
+
+              <div class="ex-body">
+                <div class="img-slot">
+                  <img src="../assets/imgs/redndent_concept_php.png" alt="Failure Type 1 - Example B (PHP)">
+                </div>
+
+                <div class="ex-text">
+                  <p>
+                    <b>What goes wrong:</b>
+                    The query highlights an extra concept (yellow) that is <b>not reflected</b> in the retrieved code implementation.
+                    In this case, XSearch fails to find the corresponding evidence in the ground-truth candidate as well,
+                    and instead retrieves another snippet that only partially overlaps (e.g., matching a generic <span class="muted">return variables</span>-style behavior).
+                  </p>
+                  <p>
+                    <b>Impact:</b>
+                    The retrieved match is driven by <b>generic return/variable patterns</b> rather than the missing highlighted logic,
+                    so the similarity/confidence remains <b>not high</b> and the explanation reveals a mismatch: the model aligns what it can find,
+                    but cannot justify the highlighted concept with a real implementation.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================================= -->
+      <!-- Failure Type 2: Single-concept collapse during clustering -->
+      <!-- ========================================================= -->
+      <div class="case">
+        <div class="case-head">
+          <p class="case-title">Failure Type: Single-Concept Collapse during Clustering</p>
+          <span class="case-tag">Java · Ruby</span>
+        </div>
+
+        <div class="case-body">
+          <div class="type-desc">
+            <b>Definition.</b>
+            The model considers all highlighted tokens to be highly similar; their pairwise distances fall just below our clustering threshold,
+            so they are <b>merged into a single concept</b>. This “collapsed” concept becomes <b>semantically mixed</b> and cannot faithfully represent
+            multiple intents in the query, nor can it align cleanly to multiple distinct code concepts—leading to coarse and unreliable matching.
+          </div>
+
+          <div class="example-grid">
+            <!-- Example A (Java) -->
+            <div class="ex">
+              <div class="ex-head">
+                <p class="ex-title">Example A (Java)</p>
+                <div class="ex-meta">
+                  <span><b>Language:</b> <span class="muted">Java</span></span>
+                </div>
+              </div>
+
+              <div class="ex-body">
+                <div class="img-slot">
+                  <img src="../assets/imgs/concept_collapse_java.png" alt="Failure Type 2 - Example A (Java)">
+                </div>
+
+                <div class="ex-text">
+                  <p>
+                    <b>What goes wrong:</b>
+                    Multiple query constraints are highlighted, but clustering collapses them into <b>one single concept</b>.
+                    As a result, the concept mixes different intents (e.g., “check whether required properties are set”),
+                    and the retriever can only provide a <b>coarse, partially relevant</b> alignment to code snippets.
+                  </p>
+                  <p>
+                    <b>Impact:</b>
+                    The explanation becomes less actionable: instead of showing several fine-grained concept-to-code matches,
+                    XSearch presents one blended concept that <b>cannot precisely verify</b> which part of the query is satisfied (or missing) in the code.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Example B (Ruby) -->
+            <div class="ex">
+              <div class="ex-head">
+                <p class="ex-title">Example B (Ruby)</p>
+                <div class="ex-meta">
+                  <span><b>Language:</b> <span class="muted">Ruby</span></span>
+                </div>
+              </div>
+
+              <div class="ex-body">
+                <div class="img-slot">
+                  <img src="../assets/imgs/concept_collapse_ruby.png" alt="Failure Type 2 - Example B (Ruby)">
+                </div>
+
+                <div class="ex-text">
+                  <p>
+                    <b>What goes wrong:</b>
+                    The highlighted tokens that correspond to different query semantics (e.g., “group changes” and “convert into expected structure”)
+                    are treated as mutually similar and end up <b>merged into one concept</b>.
+                    This collapsed concept no longer distinguishes the key steps, so the retrieved evidence is <b>overly aggregated</b>.
+                  </p>
+                  <p>
+                    <b>Impact:</b>
+                    Because concept granularity is lost, the model cannot match query semantics cleanly.
+                    The retrieval is driven by a blended signal, which increases the chance of <b>partial overlap</b> and retrieves wrong answer.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================================= -->
+      <!-- Failure Type 3: Query too short / low information -->
+      <!-- ========================================================= -->
+      <div class="case">
+        <div class="case-head">
+          <p class="case-title">Failure Type: Underspecified / Too-Short Queries</p>
+          <span class="case-tag">Python · Ruby</span>
+        </div>
+
+        <div class="case-body">
+          <div class="type-desc">
+            <b>Definition.</b>
+            The query is written too casually (e.g., a short phrase or vague description) and provides <b>insufficient implementation details</b>.
+            With limited constraints, the query concepts become weak and ambiguous, so concept-to-code alignment is unreliable and retrieval often degrades to
+            <b>approximate matches</b> with <b>low similarity/confidence</b>.
+          </div>
+
+          <div class="example-grid">
+            <!-- Example A (Python) -->
+            <div class="ex">
+              <div class="ex-head">
+                <p class="ex-title">Example A (Python)</p>
+                <div class="ex-meta">
+                  <span><b>Language:</b> <span class="muted">Python</span></span>
+                </div>
+              </div>
+
+              <div class="ex-body">
+                <div class="img-slot">
+                  <img src="../assets/imgs/short_query_python.png" alt="Failure Type 3 - Example A (Python)">
+                </div>
+
+                <div class="ex-text">
+                  <p>
+                    <b>What goes wrong:</b>
+                    The query is extremely short (“<span class="muted">str → None</span>”) and does not specify what logic should be implemented
+                    (e.g., conversion rules, edge cases, or expected return behavior). As a result, the ground-truth code has
+                    <b>little explicit overlap</b> with the query’s highlighted evidence, and concept matching yields <b>very low similarity</b>.
+                  </p>
+                  <p>
+                    <b>Impact:</b>
+                    Since the intended behavior is underspecified, XSearch can only retrieve another snippet that is
+                    <b>loosely related</b> to the query semantics (e.g., handling <span class="muted">None</span> or string conversion patterns),
+                    but the similarity/confidence remains <b>not high</b> and the retrieved result is hard to verify.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Example B (Ruby) -->
+            <div class="ex">
+              <div class="ex-head">
+                <p class="ex-title">Example B (Ruby)</p>
+                <div class="ex-meta">
+                  <span><b>Language:</b> <span class="muted">Ruby</span></span>
+                </div>
+              </div>
+
+              <div class="ex-body">
+                <div class="img-slot">
+                  <img src="../assets/imgs/short_query_ruby.png" alt="Failure Type 3 - Example B (Ruby)">
+                </div>
+
+                <div class="ex-text">
+                  <p>
+                    <b>What goes wrong:</b>
+                    The query is a shorthand note (“<span class="muted">Same as stack</span>”) written after previous related changes.
+                    It relies on missing context and provides <b>almost no standalone information</b> about the required implementation.
+                    Consequently, extracted concepts are too weak to anchor meaningful alignment.
+                  </p>
+                  <p>
+                    <b>Impact:</b>
+                    Without concrete constraints, retrieval becomes inherently ambiguous:
+                    multiple candidates can look plausible, yet none is strongly justified by the query evidence.
+                    This results in <b>low-confidence matches</b> and makes it difficult for users to validate correctness from the explanation.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================================= -->
+      <!-- Failure Type 4: Over-highlight / wrong token highlighting -->
+      <!-- ========================================================= -->
+      <div class="case">
+        <div class="case-head">
+          <p class="case-title">Failure Type: Over-Highlighting / Incorrect Token Attribution</p>
+          <span class="case-tag">JavaScript · PHP</span>
+        </div>
+
+        <div class="case-body">
+          <div class="type-desc">
+            <b>Definition.</b>
+            Some tokens in the query are <b>uninformative or incidental</b> (e.g., generic nouns, boilerplate phrases, environment names),
+            but they are <b>incorrectly highlighted</b> and treated as concept-bearing evidence. This introduces <b>noisy concepts</b> that distort
+            similarity computation: the retriever is encouraged to match superficial lexical cues rather than the true intent, which can
+            lead to <b>spurious alignment</b> and <b>wrong top-1 results</b>.
+          </div>
+
+          <div class="example-grid">
+            <!-- Example A (JavaScript) -->
+            <div class="ex">
+              <div class="ex-head">
+                <p class="ex-title">Example A (JavaScript)</p>
+                <div class="ex-meta">
+                  <span><b>Language:</b> <span class="muted">JavaScript</span></span>
+                </div>
+              </div>
+
+              <div class="ex-body">
+                <div class="img-slot">
+                  <img src="../assets/imgs/over_highlight_js.png" alt="Failure Type 4 - Example A (JavaScript)">
+                </div>
+
+                <div class="ex-text">
+                  <p>
+                    <b>What goes wrong:</b>
+                    The query is definitional (“<span class="muted">CancelToken is an object ... cancellation of an operation</span>”),
+                    but several <b>generic words</b> (e.g., <span class="muted">object</span>, <span class="muted">operation</span>,
+                    and other boilerplate description fragments) are highlighted as if they were key constraints.
+                    These tokens do not uniquely characterize the target implementation and are easy to match in many unrelated places.
+                  </p>
+                  <p>
+                    <b>Impact:</b>
+                    With noisy highlights, XSearch is pulled toward code that shares shallow cues (e.g., generic <span class="muted">token</span> handling
+                    or “this.token = ...” style statements) rather than the core behavior of <b>cancellation semantics</b>.
+                    The retrieved evidence becomes misleading and the matching degenerates into <b>partial overlap</b> instead of verifying the intended logic.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Example B (PHP) -->
+            <div class="ex">
+              <div class="ex-head">
+                <p class="ex-title">Example B (PHP)</p>
+                <div class="ex-meta">
+                  <span><b>Language:</b> <span class="muted">PHP</span></span>
+                </div>
+              </div>
+
+              <div class="ex-body">
+                <div class="img-slot">
+                  <img src="../assets/imgs/over_highlight_php.png" alt="Failure Type 4 - Example B (PHP)">
+                </div>
+
+                <div class="ex-text">
+                  <p>
+                    <b>What goes wrong:</b>
+                    The query includes many contextual phrases (e.g., environment-specific terms like
+                    <span class="muted">AppEngine VM</span>, <span class="muted">special whitelisting</span>, and other narrative tokens),
+                    and some of them are <b>over-highlighted</b>. However, these tokens are not the essential “actionable” constraints.
+                    The true intent is closer to <b>changing behavior by setting constants / bypassing a check</b>, but the highlight noise
+                    spreads attention across <b>version/info-related tokens</b> (e.g., <span class="muted">phpinfo</span>, <span class="muted">php_version</span>)
+                    that appear in multiple places.
+                  </p>
+                  <p>
+                    <b>Impact:</b>
+                    Because the similarity is influenced by these noisy tokens, the retriever may favor code that looks related to
+                    “collecting PHP info / parsing version strings” (left) rather than the function that actually
+                    <b>sets phpseclib-related constants</b> under a specific environment (right). The explanation then highlights matches that are
+                    <b>incidental</b>, making it harder for users to diagnose why the retrieval is wrong and which constraint is truly missing.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================================= -->
+      <!-- Failure Type 5: Alignment not well learned -->
+      <!-- ========================================================= -->
+      <div class="case">
+        <div class="case-head">
+          <p class="case-title">Failure Type: Insufficient Alignment Learning</p>
+          <span class="case-tag">Go · Java</span>
+        </div>
+
+        <div class="case-body">
+          <div class="type-desc">
+            <b>Definition.</b>
+            XSearch can often identify <b>roughly relevant</b> code fragments (and sometimes even retrieves the ground-truth code),
+            but the learned alignment is <b>not strong enough</b> to make the true match rank highest.
+          </div>
+
+          <div class="example-grid">
+            <!-- Example A (Go) -->
+            <div class="ex">
+              <div class="ex-head">
+                <p class="ex-title">Example A (Go)</p>
+                <div class="ex-meta">
+                  <span><b>Language:</b> <span class="muted">Go</span></span>
+                </div>
+              </div>
+
+              <div class="ex-body">
+                <div class="img-slot">
+                  <img src="../assets/imgs/insufficient_alignment_go.png" alt="Failure Type 5 - Example A (Go)">
+                </div>
+
+                <div class="ex-text">
+                  <p>
+                    <b>What goes wrong:</b>
+                    The query describes a nuanced behavior: stopping a scheduler should <b>cancel pending jobs</b> (and typically coordinate
+                    with internal lifecycle state). The top-1 candidate matches the obvious surface cue (<span class="muted">Stop()</span>)
+                    and includes a cancellation call, but it does <b>not</b> faithfully capture the full operational semantics
+                    (e.g., ensuring pending jobs are cancelled/cleared and termination is synchronized).
+                    Meanwhile, the ground-truth implementation contains the more complete stop-and-cancel workflow, but its evidence is
+                    <b>distributed across multiple statements</b> and is not emphasized enough by the learned alignment.
+                  </p>
+                  <p>
+                    <b>Impact:</b>
+                    The scorer over-values the “easy” lexical match (<span class="muted">Stop</span>, <span class="muted">cancel</span>)
+                    and under-values the functional details (“pending jobs” handling, stop completion).
+                    As a result, the correct code is retrieved but <b>ranked lower</b>, yielding a plausible-looking yet incorrect top-1.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Example B (Java) -->
+            <div class="ex">
+              <div class="ex-head">
+                <p class="ex-title">Example B (Java)</p>
+                <div class="ex-meta">
+                  <span><b>Language:</b> <span class="muted">Java</span></span>
+                </div>
+              </div>
+
+              <div class="ex-body">
+                <div class="img-slot">
+                  <img src="../assets/imgs/insufficient_alignment_java.png" alt="Failure Type 5 - Example B (Java)">
+                </div>
+
+                <div class="ex-text">
+                  <p>
+                    <b>What goes wrong:</b>
+                    The query intent is specific: <b>return the WebSphere user name</b>.
+                    The top-1 result aligns strongly to generic signals such as <span class="muted">return</span> and authentication-related
+                    identifiers (e.g., <span class="muted">principal</span> / <span class="muted">getCurrentUserName()</span>),
+                    but it actually returns a <b>principal object</b> rather than a user-name string.
+                    The ground-truth code explicitly resolves a <b>String username</b> from configuration and returns it, but this mapping
+                    requires understanding a slightly longer dependency chain (<span class="muted">Config.getProperty(...)</span> → <span class="muted">username</span>).
+                  </p>
+                  <p>
+                    <b>Impact:</b>
+                    Because alignment is not sufficiently trained to prefer <b>type- and intent-consistent</b> evidence (username-as-string)
+                    over broadly related authentication tokens, the correct candidate receives slightly lower similarity.
+                    This leads to a top-1 that “sounds right” (user/principal-related) but violates the exact requirement.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="footer">
+    © <span id="year"></span> XSearch · Qualitative Analysis
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

@@ -3,41 +3,408 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>User Study</title>
+  <title>XSearch · User Study</title>
   <link rel="stylesheet" href="../assets/style.css" />
+
+  <style>
+    .banner-title{
+      text-align:center;
+      font-size: 34px;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--brand);
+      margin: 0;
+      padding: 26px 0;
+      background: #f3f4f6;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+  
+    .img-wrap{
+      max-width: 980px;
+      margin: 16px auto 0;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background:#fff;
+      box-shadow: var(--shadow);
+      padding: 14px;
+    }
+    .img-wrap img{
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 10px;
+    }
+    .caption{
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+  
+    .box{
+      margin: 16px auto 0;
+      max-width: 980px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: var(--shadow);
+      padding: 14px;
+      overflow: hidden;
+    }
+  
+    .textblock{
+      max-width: 980px;
+      margin: 14px auto 0;
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+    .textblock b{font-weight:800;}
+    .muted{color: var(--muted);}
+  
+    /* Make sub-titles look like your screenshot style */
+    .subhead{
+      text-align:center;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f2937;
+      margin: 18px 0 0;
+    }
+  
+    /* =========================================================
+     Task Types & Representative Examples (Image-only, vertical)
+     ========================================================= */
+    .task-grid{
+      max-width: 980px;
+      margin: 16px auto 0;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .task-card{
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: var(--shadow);
+      padding: 14px;
+    }
+
+    .task-title{
+      font-size: 18px;
+      font-weight: 800;
+      color: #111827;
+      margin: 0;
+    }
+
+    .task-desc{
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .stack{
+      margin-top: 12px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    /* Make img-wrap fit nicely inside task cards */
+    .task-card .img-wrap{
+      max-width: none;
+      margin: 0;
+    }
+
+    .task-card .caption{
+      margin-top: 8px;
+    }
+  </style>
+  
 </head>
+
 <body>
-  <div class="container">
-    <div class="nav">
-      <a href="../index.html">Home</a>
-      <a href="./label-augmentation.html">Label Augmentation with Assertion</a>
-      <a href="./qualitative-analysis.html">Qualitative Analysis</a>
-      <a href="./user-study.html">User Study</a>
-    </div>
 
-    <div class="hero">
-      <h1>User Study</h1>
-      <p>
-        Placeholder page. We will add: study protocol, interface, tasks, metrics, and results.
-      </p>
-    </div>
-
-    <div class="grid">
-      <div class="card">
-        <h2>Planned content</h2>
-        <p>• Study design & participants</p>
-        <p>• Experimental tasks</p>
-        <p>• Quantitative results</p>
+  <!-- Top Nav (pages/*) -->
+  <div class="topbar">
+    <div class="container nav">
+      <div class="brand"><a href="../index.html#home" style="color:inherit;text-decoration:none;">XSearch</a></div>
+      <div class="navlinks">
+        <a href="../index.html#home">Home</a><span class="sep">·</span>
+        <a href="./label-augmentation.html" class="dim">Label Augmentation with Assertion</a><span class="sep">·</span>
+        <a href="./qualitative-analysis.html" class="dim">Qualitative Analysis</a><span class="sep">·</span>
+        <a href="./user-study.html">User Study</a>
       </div>
-      <div class="card">
-        <h2>Appendix</h2>
-        <p>We will add questionnaires and IRB-style details if needed.</p>
-      </div>
-    </div>
-
-    <div class="footer">
-      <a href="../index.html">← Back to Home</a>
     </div>
   </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-inner">
+      <h1>User Study</h1>
+      <div class="underline"></div>
+    </div>
+  </div>
+
+  <!-- Participant Demographics -->
+  <h2 class="banner-title">Participant Demographics</h2>
+  <section class="section">
+    <div class="container">
+
+      <table border="1" cellpadding="8" style="border-collapse: collapse; text-align: center; width: 100%;">
+        <thead style="background-color: #f2f2f2;">
+          <tr>
+            <th rowspan="2">Group</th>
+            <th rowspan="2">User</th>
+            <th rowspan="2">Programming Skill<br>(1–5)</th>
+            <th rowspan="2">Python Familiarity<br>(1–5)</th>
+            <th rowspan="2">Education Level</th>
+            <th rowspan="2">Accuracy</th>
+            <th rowspan="2">Time (s)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Group 1 -->
+          <tr><td rowspan="2">1</td><td>P1</td><td>2</td><td>2</td><td> Bachelor </td><td>65</td><td>2592</td></tr>
+          <tr><td>P11</td><td>3</td><td>4</td><td> Bachelor </td><td>45</td><td>3336</td></tr>
+      
+          <!-- Group 2 -->
+          <tr><td rowspan="2">2</td><td>P2</td><td>3</td><td>3</td><td> Bachelor </td><td>70</td><td>2063</td></tr>
+          <tr><td>P12</td><td>3</td><td>2</td><td> Bachelor </td><td>70</td><td>3833</td></tr>
+      
+          <!-- Group 3 -->
+          <tr><td rowspan="2">3</td><td>P3</td><td>4</td><td>4</td><td> PhD </td><td>90</td><td>1104</td></tr>
+          <tr><td>P13</td><td>3</td><td>3</td><td> PhD </td><td>70</td><td>1077</td></tr>
+      
+          <!-- Group 4 -->
+          <tr><td rowspan="2">4</td><td>P4</td><td>5</td><td>5</td><td>Research Staff</td><td>75</td><td>1510</td></tr>
+          <tr><td>P14</td><td>5</td><td>5</td><td>Research Staff</td><td>75</td><td>4780</td></tr>
+      
+          <!-- Group 5 -->
+          <tr><td rowspan="2">5</td><td>P5</td><td>4</td><td>4</td><td> Bachelor </td><td>80</td><td>1916</td></tr>
+          <tr><td>P15</td><td>4</td><td>4</td><td> Master </td><td>80</td><td>2241</td></tr>
+      
+          <!-- Group 6 -->
+          <tr><td rowspan="2">6</td><td>P6</td><td>1</td><td>2</td><td> Master </td><td>85</td><td>1880</td></tr>
+          <tr><td>P16</td><td>2</td><td>2</td><td> Master </td><td>85</td><td>2026</td></tr>
+      
+          <!-- Group 7 -->
+          <tr><td rowspan="2">7</td><td>P7</td><td>4</td><td>4</td><td> Bachelor </td><td>80</td><td>1883</td></tr>
+          <tr><td>P17</td><td>4</td><td>4</td><td> Bachelor </td><td>45</td><td>1407</td></tr>
+      
+          <!-- Group 8 -->
+          <tr><td rowspan="2">8</td><td>P8</td><td>3</td><td>2</td><td> Master </td><td>85</td><td>2114</td></tr>
+          <tr><td>P18</td><td>3</td><td>2</td><td> Master </td><td>80</td><td>3760</td></tr>
+      
+          <!-- Group 9 -->
+          <tr><td rowspan="2">9</td><td>P9</td><td>3</td><td>4</td><td> PhD </td><td>85</td><td>1300</td></tr>
+          <tr><td>P19</td><td>3</td><td>2</td><td> Master </td><td>80</td><td>2557</td></tr>
+      
+          <!-- Group 10 -->
+          <tr><td rowspan="2">10</td><td>P10</td><td>4</td><td>4</td><td> PhD </td><td>85</td><td>1390</td></tr>
+          <tr><td>P20</td><td>3</td><td>3</td><td> PhD </td><td>65</td><td>3617</td></tr>
+        </tbody>
+      </table>
+      
+
+      <div class="textblock">
+        <p class="muted" style="text-align:center;margin:10px 0 0;">
+          To ensure the reliability and fairness of our user study, we carefully designed a participant pairing strategy based on self-reported metrics of programming background. Specifically, each experimental group (EG) participant (e.g., P1–P10) was paired with a control group (CG) counterpart (P11–P20) who exhibited comparable programming skill, Python familiarity, and education level.
+        </p>
+        <p class="muted" style="text-align:center;margin:10px 0 0;">
+          This matched-pairing design minimizes individual-level variance and allows us to isolate the effect of explanation in semantic code search performance. 
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- User Study Interface -->
+  <h2 class="banner-title">User Study Interface</h2>
+  <section class="section">
+    <div class="container">
+
+      <!-- EG interface -->
+      <div class="subhead">Interface of Experimental Group user study</div>
+      <div class="img-wrap">
+        <img src="../assets/imgs/eg.png" alt="Interface of Experimental Group" />
+        <div class="caption">Experimental Group (EG) Interface</div>
+      </div>
+
+      <div class="textblock">
+        <p class="muted" style="text-align:center;margin:10px 0 0;">
+          In this interface, participants are shown additional explainability information. For each recommended code snippet, the interface highlights which concepts in the query align with specific parts of the code, helping users understand why the code was retrieved.
+        </p>
+      </div>
+
+      <!-- CG interface -->
+      <div class="subhead">Interface of Control Group user study</div>
+      <div class="img-wrap">
+        <img src="../assets/imgs/cg.png" alt="Interface of Control Group" />
+        <div class="caption">Control Group (CG) Interface</div>
+      </div>
+
+      <div class="textblock">
+        <p class="muted" style="text-align:center;margin:10px 0 0;">
+          This interface simulates a traditional code search experience. It presents the same queries and retrieved code snippetsas the experimental group but without any explanation or concept-level alignment information.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Task Types & Representative Examples (Image-only, vertical) -->
+  <h2 class="banner-title">Task Types & Representative Examples</h2>
+  <section class="section">
+    <div class="container">
+
+      <div class="textblock" style="text-align:center;">
+        <p class="muted" style="margin:0;">
+          We categorize the 20 study queries into six coarse-grained daily programming task types.
+          For each type, we show one representative example using two screenshots: the query and its ground-truth code.
+        </p>
+      </div>
+
+      <div class="task-grid">
+
+        <!-- 1) Data I/O & Persistence -->
+        <div class="task-card">
+          <div class="task-title">Data I/O</div>
+          <div class="task-desc">
+            Read/write data from files/directories/databases; persist results into CSV/JSON/DB.
+          </div>
+
+          <div class="stack">
+            <div class="img-wrap">
+              <img src="../assets/imgs/type1_q.png" alt="Query" />
+              <div class="caption">Query (Representative Example)</div>
+            </div>
+
+            <div class="img-wrap">
+              <img src="../assets/imgs/type1_c.png" alt="Ground-truth code" />
+              <div class="caption">Ground-Truth Code (Correct Answer)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2) Data Processing & Structure Operations -->
+        <div class="task-card">
+          <div class="task-title">Data Conversion</div>
+          <div class="task-desc">
+            Convert values to target types/formats to meet downstream interface expectations.
+          </div>
+
+          <div class="stack">
+            <div class="img-wrap">
+              <img src="../assets/imgs/type2_q.png" alt="Query" />
+              <div class="caption">Query (Representative Example)</div>
+            </div>
+
+            <div class="img-wrap">
+              <img src="../assets/imgs/type2_c.png" alt="Ground-truth code" />
+              <div class="caption">Ground-Truth Code (Correct Answer)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3) Parsing & Extraction -->
+        <div class="task-card">
+          <div class="task-title">Parsing &amp; Extraction</div>
+          <div class="task-desc">
+            Parse or extract information from streams, attributes, timestamps, or binary headers.
+          </div>
+
+          <div class="stack">
+            <div class="img-wrap">
+              <img src="../assets/imgs/type3_q.png" alt="Query" />
+              <div class="caption">Query (Representative Example)</div>
+            </div>
+
+            <div class="img-wrap">
+              <img src="../assets/imgs/type3_c.png" alt="Ground-truth code" />
+              <div class="caption">Ground-Truth Code (Correct Answer)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4) Validation & Constraint Checking -->
+        <div class="task-card">
+          <div class="task-title">Data Validation</div>
+          <div class="task-desc">
+            Validate inputs/data against constraints, rules, and allowed sets.
+          </div>
+
+          <div class="stack">
+            <div class="img-wrap">
+              <img src="../assets/imgs/type4_q.png" alt="Query" />
+              <div class="caption">Query (Representative Example)</div>
+            </div>
+
+            <div class="img-wrap">
+              <img src="../assets/imgs/type4_c.png" alt="Ground-truth code" />
+              <div class="caption">Ground-Truth Code (Correct Answer)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5) System/Config Management & Presentation -->
+        <div class="task-card">
+          <div class="task-title">System and Configuration Management</div>
+          <div class="task-desc">
+            Manage runtime states/configurations, render templates, refresh routes, and present outputs.
+          </div>
+
+          <div class="stack">
+            <div class="img-wrap">
+              <img src="../assets/imgs/type5_q.png" alt="Query" />
+              <div class="caption">Query (Representative Example)</div>
+            </div>
+
+            <div class="img-wrap">
+              <img src="../assets/imgs/type5_c.png" alt="Ground-truth code" />
+              <div class="caption">Ground-Truth Code (Correct Answer)</div>
+            </div>
+          </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Threats to Validity -->
+  <h2 class="banner-title">Threats to Validity</h2>
+  <section class="section" style="border-bottom:none;">
+    <div class="container">
+      <div class="box" style="max-width: 980px;">
+        <ol style="margin: 0 0 0 18px; padding: 6px 8px; line-height: 1.75;">
+          <li style="margin: 10px 0;">
+            <b>Sample Size and Diversity</b><br/>
+            While we recruited 20 participants from reputable institutions and ensured diversity in education levels and programming backgrounds, the relatively small sample size may limit the generalizability of the findings. Future studies with larger and more varied populations would strengthen external validity.
+          </li>
+          <li style="margin: 10px 0;">
+            <b>Self-Reported Proficiency Matching</b><br/>
+            Participant pairing was based on self-assessed programming skill and Python familiarity. Such subjective assessments may not perfectly reflect actual competence, potentially introducing pairing imbalances that affect internal validity.
+          </li>
+          <li style="margin: 10px 0;">
+            <b>Lack of Long-Term Evaluation</b><br/>
+            The study measured short-term task performance under time-limited, artificial conditions. It remains unclear whether the advantages of the explanation interface would persist in longer-term, real-world development scenarios.
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+
+  <div class="footer">
+    © <span id="year"></span> XSearch · User Study
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
 </body>
 </html>

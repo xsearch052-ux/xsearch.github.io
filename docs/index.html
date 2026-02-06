@@ -36,19 +36,32 @@
 
       <div class="lead">
         <p>
-          In this work, we aim to tackle two critical challenges in semantic code search:
-          <b>lack of explainability</b> and <b>poor generalizability</b>.
-          Traditional embedding-based code retrieval methods heavily depend on training data and often fail to generalize to new distributions,
-          while their black-box nature limits user trust.
+          In this work, we identify two fundamental challenges in existing semantic code search:
+          <b>(C1) the interpretability gap</b> and <b>(C2) the generalization collapse</b>.
+          While embedding-based retrievers perform well on in-distribution benchmarks, they are often black-box and fragile in real-world,
+          out-of-distribution scenarios—frequently relying on <b>shortcut cues</b> such as leading tokens (e.g., function names) rather than the true functional semantics.
         </p>
 
         <p>
-          To address these issues, we introduce <b>XSearch</b>, an intrinsically explainable semantic code retriever designed to:
+          We argue that the root cause lies in the learning paradigm:
+          current retrievers mainly perform <b>inductive matching</b> via a single global query–code similarity,
+          whereas developers need <b>deductive verification</b>—explicitly checking whether each functional requirement in the query is satisfied by the code.
+          To bridge this gap, we introduce <b>XSearch</b>, which reformulates retrieval as a <b>concept-to-code alignment</b> problem and unifies explanations with ranking.
         </p>
 
         <ul class="bullets">
-          <li><b>(i) Enhance Explainability:</b> Identify and clearly align important concepts between queries and candidate code snippets, helping developers easily understand and verify retrieved results.</li>
-          <li><b>(ii) Boost Generalizability:</b> By learning advanced concept extraction and alignment tasks, XSearch significantly improves retrieval performance on unseen (out-of-distribution) datasets without expanding training data or model size.</li>
+          <li>
+            <b>(i) Intrinsic Explainability via Deductive Alignment:</b>
+            XSearch decomposes a query into compositional concepts (e.g., actions, entities, constraints),
+            identifies salient code spans, and computes an optimal concept-to-code alignment,
+            producing <b>traceable</b> concept highlights and alignments that help users verify why a snippet is retrieved.
+          </li>
+          <li>
+            <b>(ii) Robust Generalization beyond Shortcut Learning:</b>
+            By integrating concept alignment into both training and retrieval (instead of post-hoc explanations),
+            XSearch encourages coverage of multiple functional aspects of the query and reduces reliance on superficial cues,
+            leading to substantially improved retrieval robustness on <b>out-of-distribution</b> benchmarks—without increasing model size or training data.
+          </li>
         </ul>
       </div>
     </div>
