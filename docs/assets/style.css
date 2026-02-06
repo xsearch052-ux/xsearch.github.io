@@ -2,7 +2,7 @@
   --bg: #ffffff;
   --text: #111827;
   --muted: #4b5563;
-  --brand: #2f6f9f;      /* 标题那种蓝灰 */
+  --brand: #2f6f9f;
   --link: #2563eb;
   --line: #e5e7eb;
   --shadow: 0 8px 24px rgba(0,0,0,.08);
@@ -34,23 +34,37 @@ a:hover{text-decoration: underline}
   backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(255,255,255,.12);
 }
+
+/* Make brand (left) and nav links (right) stretch to both sides */
 .nav{
   display:flex;
   align-items:center;
   justify-content: space-between;
   height: 52px;
+  gap: 16px;                 /* add spacing so items don't touch on narrow widths */
 }
+
+/* Keep the brand from shrinking */
 .brand{
   color: #fff;
   font-weight: 700;
   letter-spacing: .2px;
   font-size: 18px;
+  flex: 0 0 auto;            /* prevent shrink */
+  white-space: nowrap;
 }
+
+/* Let nav links take remaining space and align to the right edge */
 .navlinks{
   display:flex;
   gap: 16px;
   align-items:center;
+  justify-content: flex-end; /* push links to the right */
+  flex: 1 1 auto;            /* occupy remaining space */
+  flex-wrap: wrap;           /* wrap on smaller screens instead of overflow */
+  text-align: right;
 }
+
 .navlinks a{
   color: rgba(255,255,255,.92);
   font-size: 14px;
@@ -60,10 +74,63 @@ a:hover{text-decoration: underline}
 .navlinks a:hover{color:#fff; text-decoration:none}
 .navlinks .sep{color: rgba(255,255,255,.35)}
 
+/* On very small screens, allow the topbar to grow in height to fit wrapped links */
+@media (max-width: 720px){
+  .nav{
+    height: auto;            /* allow multi-line nav */
+    padding: 10px 0;         /* keep vertical breathing room */
+    align-items: flex-start; /* align to top when wrapped */
+  }
+  .navlinks{
+    row-gap: 8px;
+  }
+}
+
+/* =========================
+   Topbar: make it full-width (override .container)
+   ========================= */
+
+/* In topbar, the node is: <div class="container nav"> */
+.topbar .container.nav{
+  max-width: none;        /* remove the 1080px cap */
+  width: 100%;            /* stretch to viewport */
+  margin: 0;              /* no centering margin */
+  padding: 0 24px;        /* keep some breathing room from window edges */
+}
+
+/* Keep left-right alignment */
+.topbar .nav{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 52px;
+  gap: 16px;
+}
+
+/* Right-align links and allow wrap */
+.topbar .navlinks{
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Small screens: allow multi-line nav */
+@media (max-width: 720px){
+  .topbar .nav{
+    height: auto;
+    padding: 10px 0;
+    align-items: flex-start;
+  }
+}
+
+
 /* ===== Hero ===== */
 .hero{
   position: relative;
-  min-height: 320px;
+  min-height: 240px;         /* reduced from 320px */
   display:flex;
   align-items:center;
   justify-content:center;
@@ -82,12 +149,12 @@ a:hover{text-decoration: underline}
 }
 .hero-inner{
   position: relative;
-  padding: 70px 18px 60px;
+  padding: 44px 18px 40px;   /* reduced vertical padding */
   max-width: 980px;
 }
 .hero h1{
   margin:0;
-  font-size: 54px;
+  font-size: 48px;           /* reduced from 54px */
   font-weight: 800;
   font-style: italic;
   letter-spacing: .2px;
@@ -96,7 +163,7 @@ a:hover{text-decoration: underline}
   width: 76px;
   height: 5px;
   background: #7fb4da;
-  margin: 18px auto 0;
+  margin: 16px auto 0;       /* slightly reduced */
   border-radius: 999px;
   opacity: .95;
 }
@@ -137,7 +204,9 @@ a:hover{text-decoration: underline}
 }
 @media (max-width: 880px){
   .grid-2{grid-template-columns: 1fr}
-  .hero h1{font-size: 40px}
+  .hero h1{font-size: 38px}  /* slightly smaller than before */
+  .hero{min-height: 200px}   /* further reduce hero height on small screens */
+  .hero-inner{padding: 34px 18px 32px}
 }
 
 .card{
